@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CapstoneTests
@@ -10,18 +11,31 @@ namespace CapstoneTests
     public class VendingMachineTests
     {
         [TestMethod]
-        public void FillSlotsTests()
+        public void testCallInventory()
         {
             VendingMachine vm = new VendingMachine();
-
-            vm.FillSlots(new string[] { "A1|Potato Crisps|3.05|Chip" });
-
-            Assert.AreEqual(true, vm.Inventory.ContainsKey("A1"));
-            Assert.AreEqual(false, vm.Inventory.ContainsKey("E3"));
+            VendingMachine readervm = new VendingMachine();
+            
+            string directory = "C:\\Users\\Student\\git\\dotnet-capstone-1-team-1";
+            string sourceFile = "vendingmachine.csv";
+            string fullPath = Path.Combine(directory, sourceFile);
+            using (StreamReader sr = new StreamReader(fullPath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string eachLine = sr.ReadLine();
+                    string[] item = eachLine.Split("|");
+                    readervm.Inventory.Add(item[0], new VendingMachineItems(item[1], decimal.Parse(item[2]), item[3]));
+                }
+            }
+            
+            vm.CallInventory();
+            Assert.AreEqual(readervm.Inventory.ToString(), vm.Inventory.ToString());
+       
         }
 
         [TestMethod]
-        public void FeedMoneyTests()
+        public void feedMoneyTests()
         {
             VendingMachine vm = new VendingMachine();
 
@@ -31,11 +45,11 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void DispenseItemsTests()
+        public void dispenseItemsTests()
         {
             VendingMachine vm = new VendingMachine();
             
-            vm.FillSlots(new string[] {"A1|Potato Crisps|3.05|Chip"});
+            vm.CallInventory();
             vm.DispenseItems("A1");
 
             Assert.AreEqual(4, vm.Inventory["A1"].Quantity);
@@ -44,7 +58,7 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void MakeChangeTests()
+        public void makeChangeTests()
         {
             VendingMachine vm = new VendingMachine();
 
@@ -52,5 +66,6 @@ namespace CapstoneTests
 
             Assert.AreEqual(0, vm.Balance);
         }
+   
     }
 }

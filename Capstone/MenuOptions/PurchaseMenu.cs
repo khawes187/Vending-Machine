@@ -92,6 +92,7 @@ namespace Capstone
             Console.WriteLine($"You have {VM.Balance:C} remaining.");
             Console.WriteLine($"Press Enter to Return to Menu.");
             Console.ReadLine();
+            Console.Clear();
         }
 
 

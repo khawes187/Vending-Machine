@@ -45,7 +45,7 @@ namespace Capstone.MenuOptions
                         break;
 
                     case "3"://Exits Program
-                        VM.theAudit();
+                        VM.Audit();
                         keepGoing = false;
                         break;
 

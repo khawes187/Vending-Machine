@@ -11,6 +11,10 @@ namespace Capstone.Classes
         public decimal Balance { get; set; }
         public Dictionary<string, VendingMachineItems> Inventory { get; } = new Dictionary<string, VendingMachineItems>();
 
+
+        public List<string> auditList = new List<string>();
+
+
         //Methods
         public void CallInventory()
         {
@@ -31,16 +35,7 @@ namespace Capstone.Classes
             }
             catch(Exception)
             {
-                Console.WriteLine("An error has occured. Please restart program and try again");
-            }
-        }
-
-        public void FillSlots(string[] stockList)
-        {
-            foreach (string line in stockList)
-            {
-                string[] item = line.Split("|");
-                Inventory.Add(item[0], new VendingMachineItems(item[1], decimal.Parse(item[2]), item[3]));
+                Console.WriteLine("An error occured while gathering the inventory from vendingmachine.csv. Please restart program and try again");
             }
         }
 
@@ -61,8 +56,6 @@ namespace Capstone.Classes
                 
             }
         }
-
-        public List<string> auditList = new List<string>();
         
         public void DispenseItems(string selection)
         {
@@ -88,7 +81,7 @@ namespace Capstone.Classes
 
         }
 
-        public void theAudit()
+        public void Audit() //Write auditList to file at the close of main menu
         {
             string directory = "C:\\Users\\Student\\git\\dotnet-capstone-1-team-1";
             string sourceFile = "Log.txt";
@@ -103,9 +96,9 @@ namespace Capstone.Classes
                         }                           
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("An error occured while writing the audit to Log.txt. Please restart program and try again");
                 }
         }
 

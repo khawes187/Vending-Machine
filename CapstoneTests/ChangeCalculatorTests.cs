@@ -10,7 +10,7 @@ namespace CapstoneTests
     public class ChangeCalculatorTests
     {
         [DataTestMethod]
-        public void ZeroDollarsReturnsZeroChange()
+        public void zeroDollarsReturnsZeroChange()
         {
             ChangeCalculator change = new ChangeCalculator(0M);
 
@@ -21,7 +21,7 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void SmallChangeTests()
+        public void smallChangeTests()
         {
             ChangeCalculator change = new ChangeCalculator(0.03M);
 
@@ -52,7 +52,7 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void LargeChangeTests()
+        public void largeChangeTests()
         {
             ChangeCalculator change = new ChangeCalculator(105.69M);
 

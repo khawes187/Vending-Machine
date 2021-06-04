@@ -48,7 +48,10 @@ namespace Capstone.Classes
         //Methods
         public void UpdateQuantity()
         {
-            this.Quantity -= 1;
+            if(this.Quantity >= 1)
+            {
+                this.Quantity -= 1;
+            }   
         }
     }
 }

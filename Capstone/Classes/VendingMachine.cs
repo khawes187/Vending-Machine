@@ -95,7 +95,7 @@ namespace Capstone.Classes
             string fullPath = Path.Combine(directory, sourceFile);           
                 try
                 {
-                    using (StreamWriter sw = new StreamWriter(fullPath))
+                    using (StreamWriter sw = new StreamWriter(fullPath,true))
                     {
                         foreach (string item in auditList)
                         {

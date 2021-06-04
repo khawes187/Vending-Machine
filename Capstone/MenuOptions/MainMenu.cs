@@ -34,12 +34,14 @@ namespace Capstone.MenuOptions
                         Dictionary<string, VendingMachineItems> items = VM.Inventory;
                         DisplayItems(items);
                         Console.WriteLine("\nPress Enter to Return to The Main Manu Selection.");
+                        Console.ReadLine();
                         break;
 
                     case "2"://Calls Purchase Menu
                         PurchaseMenu menu = new PurchaseMenu(VM);
                         menu.DisplayPurchaseMenu();
                         Console.WriteLine("\nPress Enter to Return to The Main Manu Selection.");
+                        Console.ReadLine();
                         break;
 
                     case "3"://Exits Program
@@ -49,6 +51,7 @@ namespace Capstone.MenuOptions
 
                     default:
                         Console.WriteLine("Invalid Menu Option. Please Try Again.");
+                        Console.ReadLine();
                         continue;
                 }
             }

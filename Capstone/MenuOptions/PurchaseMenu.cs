@@ -51,6 +51,7 @@ namespace Capstone
                         break;
                     default:
                         Console.WriteLine("Invalid Menu Option. Please Try Again.");
+                        Console.ReadLine();
                         continue;
                 }
             }
@@ -64,15 +65,17 @@ namespace Capstone
             if (!items.ContainsKey(selection))
             {
                 Console.WriteLine("Invalid Selection. Try Again.");
+                Console.ReadLine();
             }
             else if (items[selection].Quantity < 1)
             {
                 Console.WriteLine("Out of stock. Please make a different selection.");
+                Console.ReadLine();
             }
             else if (VM.Balance < items[selection].Price)
             {
                 Console.WriteLine($"You have insufficient funds. Please try again");
-
+                Console.ReadLine();
             }
             else
             {
@@ -88,6 +91,7 @@ namespace Capstone
             Console.WriteLine($"{item.PurchaseMessage}");
             Console.WriteLine($"You have {VM.Balance:C} remaining.");
             Console.WriteLine($"Press Enter to Return to Menu.");
+            Console.ReadLine();
         }
 
 
@@ -100,11 +104,11 @@ namespace Capstone
 
             if (!int.TryParse(input, out int value))
             {
-                Console.WriteLine($"Feed error. Please enter a whole dollar amount.");
+                Console.WriteLine($"Feed error. Please enter a whole dollar amount.");               
             }
             if (value < 0)
             {
-                Console.WriteLine($"Feed error. Please enter a whole dollar amount.");
+                Console.WriteLine($"Feed error. Please enter a whole dollar amount.");               
             }
             else
             {

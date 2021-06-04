@@ -10,8 +10,7 @@ namespace Capstone
         {
             VendingMachine test = new VendingMachine();
             MainMenu testMenu = new MainMenu(test);
-            testMenu.DisplayMainMenu();
-            
+            testMenu.DisplayMainMenu();           
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Capstone.MenuOptions
         }
         public void DisplayMainMenu()
         {
+            VM.CallInventory();
             bool keepGoing = true;
             while (keepGoing)
             {
@@ -29,12 +30,26 @@ namespace Capstone.MenuOptions
 
                 switch (input)
                 {
-                    case "1":
+                    case "1"://Calls display items
                         Dictionary<string, VendingMachineItems> items = VM.Inventory;
                         DisplayItems(items);
                         Console.WriteLine("\nPress Enter to Return to The Main Manu Selection.");
                         break;
 
+                    case "2"://Calls Purchase Menu
+                        PurchaseMenu menu = new PurchaseMenu(VM);
+                        menu.DisplayPurchaseMenu();
+                        Console.WriteLine("\nPress Enter to Return to The Main Manu Selection.");
+                        break;
+
+                    case "3"://Exits Program
+                        VM.theAudit();
+                        keepGoing = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid Menu Option. Please Try Again.");
+                        continue;
                 }
             }
         }

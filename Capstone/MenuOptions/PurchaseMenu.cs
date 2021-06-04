@@ -12,13 +12,10 @@ namespace Capstone
     /// </summary>
     public class PurchaseMenu : MainMenu
     {
-        #region Constructor
         public PurchaseMenu(VendingMachine vm) : base(vm)
         {
         }
-        #endregion
 
-        #region Methods
         public void DisplayPurchaseMenu()
         {
             string input;
@@ -121,6 +118,5 @@ namespace Capstone
         {
             Console.WriteLine($"Here is your change: {change.Quarters} Quarters, {change.Dimes} Dimes, {change.Nickels} Nickels, and {change.Pennies} Pennies");
         }
-        #endregion
     }
 }

@@ -74,7 +74,5 @@ namespace Capstone.MenuOptions
             }
             Console.WriteLine("\t\t-----------------------------------------------");
         }
-
-
     }
 }

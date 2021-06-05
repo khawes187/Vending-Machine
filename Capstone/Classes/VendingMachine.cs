@@ -20,8 +20,8 @@ namespace Capstone.Classes
         {
             try
             {
-                string directory = "C:\\Users\\Student\\git\\dotnet-capstone-1-team-1";
-                string sourceFile = "vendingmachine.csv";
+                string directory = Directory.GetCurrentDirectory();
+                string sourceFile = @"..\..\..\..\vendingmachine.csv";
                 string fullPath = Path.Combine(directory, sourceFile);
                 using(StreamReader sr = new StreamReader(fullPath))
                 {
@@ -83,8 +83,8 @@ namespace Capstone.Classes
 
         public void Audit() //Write auditList to file at the close of main menu
         {
-            string directory = "C:\\Users\\Student\\git\\dotnet-capstone-1-team-1";
-            string sourceFile = "Log.txt";
+            string directory = Directory.GetCurrentDirectory();
+            string sourceFile = @"..\..\..\..\Log.txt";
             string fullPath = Path.Combine(directory, sourceFile);           
                 try
                 {

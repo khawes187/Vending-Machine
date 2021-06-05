@@ -50,7 +50,7 @@ namespace Capstone
                         keepGoing = false;
                         break;
                     default:
-                        Console.WriteLine("Invalid Menu Option. Please Try Again.");
+                        Console.WriteLine("Invalid Menu Option. Please press enter and Try Again.");
                         Console.ReadLine();
                         continue;
                 }
@@ -64,17 +64,17 @@ namespace Capstone
 
             if (!items.ContainsKey(selection))
             {
-                Console.WriteLine("Invalid Selection. Try Again.");
+                Console.WriteLine("Invalid Selection. Press enter and Try Again.");
                 Console.ReadLine();
             }
             else if (items[selection].Quantity < 1)
             {
-                Console.WriteLine("Out of stock. Please make a different selection.");
+                Console.WriteLine("Out of stock. Please press enter and make a different selection.");
                 Console.ReadLine();
             }
             else if (VM.Balance < items[selection].Price)
             {
-                Console.WriteLine($"You have insufficient funds. Please try again");
+                Console.WriteLine($"You have insufficient funds. Please press enter and select the Feed Money option.");
                 Console.ReadLine();
             }
             else
@@ -90,7 +90,7 @@ namespace Capstone
             Console.WriteLine($"{item.ProductName} is yours for only {item.Price:C}.");
             Console.WriteLine($"{item.PurchaseMessage}");
             Console.WriteLine($"You have {VM.Balance:C} remaining.");
-            Console.WriteLine($"Press Enter to Return to Menu.");
+            Console.WriteLine($"Press Enter to Return to the Purchase Menu.");
             Console.ReadLine();
             Console.Clear();
         }
@@ -116,6 +116,7 @@ namespace Capstone
                 VM.FeedMoney(value);
                 Console.WriteLine($"{value:C} added.");
             }
+            Console.WriteLine("Press enter to continue.");
             Console.ReadLine();
         }
 

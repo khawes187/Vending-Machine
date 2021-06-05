@@ -45,16 +45,49 @@ namespace CapstoneTests
         }
 
         [TestMethod]
-        public void dispenseItemsTests()
+        public void dispenseItemsTestsHappyRoad()
         {
             VendingMachine vm = new VendingMachine();
             
             vm.CallInventory();
+            vm.FeedMoney(10);
             vm.DispenseItems("A1");
-
+            
             Assert.AreEqual(4, vm.Inventory["A1"].Quantity);
             Assert.AreEqual(3.05M, vm.Inventory["A1"].Price);
-            Assert.AreEqual(-3.05M, vm.Balance);
+            Assert.AreEqual(6.95M, vm.Balance);
+        }
+
+        [TestMethod]
+        public void dispenseItemsTestsLater()
+        {
+            VendingMachine vm = new VendingMachine();
+
+            vm.CallInventory();
+            vm.FeedMoney(10);
+            vm.DispenseItems("C4");
+           
+            Assert.AreEqual(4, vm.Inventory["C4"].Quantity);
+            Assert.AreEqual(1.50M, vm.Inventory["C4"].Price);
+            Assert.AreEqual(8.50M, vm.Balance);
+        }
+
+        [TestMethod]
+        public void dispenseItemsTestsMultiples()
+        {
+            VendingMachine vm = new VendingMachine();
+
+            vm.CallInventory();
+            vm.FeedMoney(10);
+            vm.DispenseItems("C4");
+            vm.DispenseItems("C4");
+            vm.DispenseItems("C4");
+            vm.DispenseItems("C4");
+            vm.DispenseItems("C4");
+
+            Assert.AreEqual(0, vm.Inventory["C4"].Quantity);
+            Assert.AreEqual(1.50M, vm.Inventory["C4"].Price);
+            Assert.AreEqual(2.50M, vm.Balance);
         }
 
         [TestMethod]

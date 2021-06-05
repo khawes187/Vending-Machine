@@ -62,7 +62,7 @@ namespace Capstone.Classes
             Balance -= Inventory[selection].Price;
             Inventory[selection].Quantity--;
             //Audit below
-            auditList.Add($"{DateTime.Now} {Inventory[selection].ProductName} {selection} ${this.Balance} ${this.Balance - Inventory[selection].Price}");
+            auditList.Add($"{DateTime.Now} {Inventory[selection].ProductName} {selection} ${this.Balance + Inventory[selection].Price} ${this.Balance}");
         }
 
         public void FeedMoney(int money)

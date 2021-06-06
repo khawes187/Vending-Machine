@@ -28,7 +28,7 @@ namespace Capstone.MenuOptions
                 Console.Write("Please Enter Selection: ");
                 string input = Console.ReadLine();
 
-                switch (input)
+                switch (input) //Operates similarly to if - else constructs
                 {
                     case "1"://Calls display items
                         Dictionary<string, VendingMachineItems> items = VM.Inventory;
@@ -52,7 +52,7 @@ namespace Capstone.MenuOptions
                         break;
 
                     default:
-                        Console.WriteLine("Invalid Menu Option. Please Try Again.");
+                        Console.WriteLine("Invalid Menu Option. Please press enter and Try Again.");
                         Console.ReadLine();
                         Console.Clear();
                         continue;
